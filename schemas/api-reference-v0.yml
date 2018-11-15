@@ -1,4 +1,8 @@
-$schema: 'http://json-schema.org/draft-06/schema#'
+# TODO: abstract/absolute
+$schema: "./metadata-metaschema.json"
+metadata:
+  name: "api-reference"
+  version: 0
 title: API Reference File
 description: Reference of methods implemented by API
 type: object

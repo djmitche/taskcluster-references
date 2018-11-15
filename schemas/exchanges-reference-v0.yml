@@ -1,4 +1,7 @@
-$schema: 'http://json-schema.org/draft-06/schema#'
+$schema: "./metadata-metaschema.json"
+metadata:
+  name: "exchanges-reference"
+  version: 0
 title: Exchange Reference File
 description: Reference of exchanges published
 type: object

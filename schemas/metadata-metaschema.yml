@@ -1,0 +1,71 @@
+$schema: "http://json-schema.org/draft-06/schema#"
+title: "JSON-Schema Meta-Schema, with the addition of a `metadata` property"
+type: object
+properties:
+  metadata:
+    title: "Metadata for this schema"
+    description: |
+      Metadata identifying the documents that the schema document describes,
+      giving both a name (a category of document) and a version (to allow
+      several versions of the same category).  Consumers of the documents can
+      consult the schema metadata to determine how to process the document.
+
+      Any changes to a schema that require changes to consumers of the described
+      documents should be accompanied by a version increase.
+    type: object
+    properties:
+      name:
+        title: "Name of the document category"
+        type: string
+      version:
+        title: "Version of the document format"
+        type: integer
+      additionalProperties: false
+      required:
+        - version
+        - name
+
+  # properties from the "real" json-schema; note that recursive sub-schemas
+  # need not have metadata
+  $id: {$ref: "http://json-schema.org/draft-06/schema#properties/$id"}
+  $schema: {$ref: "http://json-schema.org/draft-06/schema#properties/$schema"}
+  $ref: {$ref: "http://json-schema.org/draft-06/schema#properties/$ref"}
+  title: {$ref: "http://json-schema.org/draft-06/schema#properties/title"}
+  description: {$ref: "http://json-schema.org/draft-06/schema#properties/description"}
+  default: {$ref: "http://json-schema.org/draft-06/schema#properties/default"}
+  examples: {$ref: "http://json-schema.org/draft-06/schema#properties/examples"}
+  multipleOf: {$ref: "http://json-schema.org/draft-06/schema#properties/multipleOf"}
+  maximum: {$ref: "http://json-schema.org/draft-06/schema#properties/maximum"}
+  exclusiveMaximum: {$ref: "http://json-schema.org/draft-06/schema#properties/exclusiveMaximum"}
+  minimum: {$ref: "http://json-schema.org/draft-06/schema#properties/minimum"}
+  exclusiveMinimum: {$ref: "http://json-schema.org/draft-06/schema#properties/exclusiveMinimum"}
+  maxLength: {$ref: "http://json-schema.org/draft-06/schema#properties/maxLength"}
+  minLength: {$ref: "http://json-schema.org/draft-06/schema#properties/minLength"}
+  pattern: {$ref: "http://json-schema.org/draft-06/schema#properties/pattern"}
+  additionalItems: {$ref: "http://json-schema.org/draft-06/schema#properties/additionalItems"}
+  items: {$ref: "http://json-schema.org/draft-06/schema#properties/items"}
+  maxItems: {$ref: "http://json-schema.org/draft-06/schema#properties/maxItems"}
+  minItems: {$ref: "http://json-schema.org/draft-06/schema#properties/minItems"}
+  uniqueItems: {$ref: "http://json-schema.org/draft-06/schema#properties/uniqueItems"}
+  contains: {$ref: "http://json-schema.org/draft-06/schema#properties/contains"}
+  maxProperties: {$ref: "http://json-schema.org/draft-06/schema#properties/maxProperties"}
+  minProperties: {$ref: "http://json-schema.org/draft-06/schema#properties/minProperties"}
+  required: {$ref: "http://json-schema.org/draft-06/schema#properties/required"}
+  additionalProperties: {$ref: "http://json-schema.org/draft-06/schema#properties/additionalProperties"}
+  definitions: {$ref: "http://json-schema.org/draft-06/schema#properties/definitions"}
+  properties: {$ref: "http://json-schema.org/draft-06/schema#properties/properties"}
+  patternProperties: {$ref: "http://json-schema.org/draft-06/schema#properties/patternProperties"}
+  dependencies: {$ref: "http://json-schema.org/draft-06/schema#properties/dependencies"}
+  propertyNames: {$ref: "http://json-schema.org/draft-06/schema#properties/propertyNames"}
+  const: {$ref: "http://json-schema.org/draft-06/schema#properties/const"}
+  enum: {$ref: "http://json-schema.org/draft-06/schema#properties/enum"}
+  type: {$ref: "http://json-schema.org/draft-06/schema#properties/type"}
+  format: {$ref: "http://json-schema.org/draft-06/schema#properties/format"}
+  allOf: {$ref: "http://json-schema.org/draft-06/schema#properties/allOf"}
+  anyOf: {$ref: "http://json-schema.org/draft-06/schema#properties/anyOf"}
+  oneOf: {$ref: "http://json-schema.org/draft-06/schema#properties/oneOf"}
+  not: {$ref: "http://json-schema.org/draft-06/schema#properties/not"}
+
+  required:
+    - metadata
+  # Note that JSON-schema allows additional properties
